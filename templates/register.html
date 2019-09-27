@@ -1,0 +1,37 @@
+{% extends "layout_login.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('register') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="New_Username" type="text" required/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password" required/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="cp" placeholder="Confirm_Password" type="password" required/>
+            </div>
+            <div class="form-group">
+                <select name="sq" required>
+                    <option value="" disabled selected>Select your security question</option>
+                    <option value="a">What is favourite book?</option>
+                    <option value="b">Thing u like the most about this course?</option>
+                    <option value="c">Wanna fool hackers?:P</option>
+                    <option value="d">Don't u think the Founder of this site is cool? :p</option>
+                    <option value="e">Does God exist ?</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="sa" placeholder="Answer" type="text" required/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Register</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

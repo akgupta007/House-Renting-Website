@@ -1,0 +1,16 @@
+{% extends "layout_login.html" %}
+
+{% block title %}
+    Successful!
+{% endblock %}
+
+{% block main %}
+    <h3>Congrats! Password Successfully Reset :)</h3>
+    <form action="{{ url_for('login') }}" method="get">
+        <fieldset>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Go to Login Page</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layout_login.html" %}
+
+{% block title %}
+    Summary
+{% endblock %}
+
+{% block main %}
+    <table style="width:100%" align = "center">
+        <caption> ON SALE </caption>
+        <tr>
+            <th>FLAT ID</th>
+            <th>District</th>
+            <th>PRICE</th>
+            <th>Area</th>
+            <th>LIVING ROOMS</th>
+            <th>KITCHEN</th>
+            <th>BEDROOMS</th>
+            <th>REMOVE FROM SALE</th>
+            <th>RENT STATUS</th>
+        </tr>
+        {% set gt=[0] %}
+        {%  for flat_no,district,price,square,kitchen,living,bedroom,sale,rent_status,ownership,id in trans %}
+            {% if sale == 1 and ownership == "owner" %}
+            <form action="{{ url_for('index') }}" method="post">
+            <tr>
+                <td>{{ flat_no }}</td>
+                <td>{{ district }}</td>
+                <td>{{ price }} $</td>
+                <td>{{ square }}</td>
+                <td>{{ living }}</td>
+                <td>{{ kitchen }}</td>
+                <td>{{ bedroom }}</td>
+                <input type="hidden" name="flat_no" value={{ flat_no }} />
+                <td><button type="submit" name = "remove" value = "remove" class="btn btn-default">Remove</button></td>
+                {% if rent_status == 0 %}
+                    <td><button type="submit" name = "rent_status_change" value = 'ADD RENT' class="btn btn-default">ADD RENT</button></td>
+                {% else %}
+                    <td><button type="submit" name = "rent_status_change" value = 'REMOVE RENT' class="btn btn-default">REMOVE RENT</button></td>
+                {% endif %}
+                
+            </tr>
+            </form>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <table style="width:100%" align = "center">
+        <caption> NOT ON SALE </caption>
+        <tr>
+            <th>FLAT ID</th>
+            <th>District</th>
+            <th>PRICE</th>
+            <th>Area</th>
+            <th>LIVING ROOMS</th>
+            <th>KITCHEN</th>
+            <th>BEDROOMS</th>
+            <th>ADD TO SALE</th>
+            <th>RENT STATUS</th>
+        </tr>
+        {% set gt=[0] %}
+        {%  for flat_no,district,price,square,kitchen,living,bedroom,sale,rent_status,ownership,id in trans %}
+            {% if sale == 0 and ownership == "owner" %}
+            <form action="{{ url_for('index') }}" method="post">
+            <tr>
+                <td>{{ flat_no }}</td>
+                <td>{{ district }}</td>
+                <td>{{ price }} $</td>
+                <td>{{ square }}</td>
+                <td>{{ living }}</td>
+                <td>{{ kitchen }} </td>
+                <td>{{ bedroom }}</td>
+                <input type="hidden" name="flat_no" value={{ flat_no }} />
+                <td><button type="submit" name = "add" value = "add" class="btn btn-default">SELL</button></td>
+                {% if rent_status == 0 %}
+                    <td><button type="submit" name = "rent_status_change" value = 'ADD RENT' class="btn btn-default">ADD RENT</button></td>
+                {% else %}
+                    <td><button type="submit" name = "rent_status_change" value = 'REMOVE RENT' class="btn btn-default">REMOVE RENT</button></td>
+                {% endif %}
+            </tr>
+            </form>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <table style="width:100%" align = "center">
+        <caption> HOUSE YOU RENT </caption>
+        <tr>
+            <th>FLAT ID</th>
+            <th>District</th>
+            <th>PRICE</th>
+            <th>Area</th>
+            <th>LIVING ROOMS</th>
+            <th>KITCHEN</th>
+            <th>BEDROOMS</th>
+            <th>RENT STATUS</th>
+        </tr>
+        {% set gt=[0] %}
+        {%  for flat_no,district,price,square,kitchen,living,bedroom,sale,rent_status,ownership,id in trans %}
+            {% if ownership == "tenant" %}
+            <form action="{{ url_for('index') }}" method="post">
+            <tr>
+                <td>{{ flat_no }}</td>
+                <td>{{ district }}</td>
+                <td>{{ price }} $</td>
+                <td>{{ square }}</td>
+                <td>{{ living }}</td>
+                <td>{{ kitchen }} </td>
+                <td>{{ bedroom }}</td>
+                <input type="hidden" name="flat_no" value={{ flat_no }} />
+                <td><button type="submit" name = "remove_rent" value = "remove_rent" class="btn btn-default">REMOVE</button></td>
+            </tr>
+            </form>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

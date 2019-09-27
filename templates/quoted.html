@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Price
+{% endblock %}
+
+{% block main %}
+    <table style="width:100%">
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+        <tr>
+            <td>{{symbol}}</td>
+            <td>{{name}}</td>
+            <td>1</td>
+            <td>{{price|usd}}</td>
+            <td>{{price|usd}}</td>
+        </tr>
+        <tr>
+            <td>CASH</td>
+            <td></td><td></td><td></td>
+            <td>{{balance|usd}}</td>
+        </tr>
+    </table>
+{% endblock %}

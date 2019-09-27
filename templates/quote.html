@@ -1,0 +1,24 @@
+{% extends "layout_login.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h3> USER ID: {{ userId}} </h3>
+    <form action="{{ url_for('quote') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                Check Your Balance Here!!!
+            </div>
+            <div class="form-group">
+                {% if balance %}
+                    <label> {{balance}} $ </label>
+                {% else %}
+                <button class="btn btn-default" type="submit">Check Balance</button>
+                {% endif %}
+            </div>
+
+        </fieldset>
+    </form>
+{% endblock %}

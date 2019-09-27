@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rent
+{% endblock %}
+
+{% block details %}
+{% for flat_no, price, square, kitchen, living, bedroom, buildingtype, constructiontime, renovationcondition, buildingstructure, elevator, subway,district, communityaverage, link, near, url in urls %}
+<div class="col-xs-6 col-lg-4">
+    <form action = "{{ url_for('rent') }}" method = "post">
+        <label> House Id : {{flat_no}} </label>
+        <input type="hidden" name="flat_no" value={{ flat_no }} />
+        <img src = {{url}} width=250 height = 200>
+        <div class = "list-group">
+          <details>
+            <b> Price: </b> {{price}}</label> <br>
+            <b> Area: </b> {{square}}</label> <br>
+            <b> District: </b> {{district }}</label> <br>
+            <b> Nearest University: </b> {{ near }}</label> <br>
+            <b> Building Structure: </b> {{ buildingstructure }}</label> <br>
+            <b> Community average: </b> {{ communityaverage}}</label> <br>
+            <b> Elevator: </b> {{ elevator }}</label> <br>
+            <b> No. of bedrooms: </b> {{bedroom}}</label> <br>
+            <b> No. of Kitchen: </b> {{kitchen}}</label> <br>
+            <b> No. of Living Rooms: </b> <label name = "living"> {{living}} </label>
+          </details>
+        </div>
+      <p><a class="btn btn-default" href={{ link }} role="button">goto website &raquo;</a><button class="btn btn-default" name="Rent" >Rent &raquo;</p>
+    </form>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block filters %}
+
+    <container>
+        <form class = "form-inline" action="{{ url_for('rent') }}" method="post">
+          <div class="list-inline" >
+          <label for="pwd">Flat Id:</label>
+          <input type="text" class="form-control" id="flat_no" placeholder="--Any--" name="flat_no" size =  "20">
+        </div>
+          <div class="list-inline" >
+          <label for="pwd">District:</label>
+          <input type="text" class="form-control" id="District" placeholder="--Any--" name="district" size =  "20">
+        </div>
+        <div class="list-inline" >
+          <label for="pwd">Near:</label>
+          <input type="text" class="form-control" id="near" placeholder="--Any--" name="near" size =  "20">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Building Structure:</label>
+          <input type="integer" class="form-control" id="Building Number" placeholder="--Any--" name="buildingstructure" size = "6">
+        </div>
+          <div class="list-inline">
+          <label for="email">Price Range:</label>
+          <input type="integer" class="form-control" id="price_min" placeholder="min" name="price_min" size = "2"> to 
+          <input type="integer" class="form-control" id="price_max" placeholder="max" name="price_max" size = "2">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Bedrooms:</label>
+          <input type="integer" class="form-control" id="bedroom" placeholder="--Any--" name="bedroom" size = "6">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Elevator:</label>
+          <input type="integer" class="form-control" id="elevator" placeholder="--Any--" name="elevator" size = "6">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Kitchen:</label>
+          <input type="integer" class="form-control" id="Kitchen" placeholder="--Any--" name="Kitchen" size = "17">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Living Rooms:</label>
+          <input type="integer" class="form-control" id="Living Room" placeholder="--Any--" name="Living" size = "10">
+        </div>
+        <div class="list-inline">
+          <label for="pwd">Plot Area:</label>
+          <input type="integer" class="form-control" id="Area_min" placeholder="min" name="area_min" size = "3"> to
+          <input type="integer" class="form-control" id="Area_max" placeholder="max" name="area_max" size = "3">
+        </div>
+        <div class="list-group"> 
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" name = "Apply" value = "Apply" class="btn btn-default">Apply Filters</button>
+            </div>
+          </div>
+      </form>
+    </container>
+    
+{% endblock %}

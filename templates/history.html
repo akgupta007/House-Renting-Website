@@ -1,0 +1,28 @@
+{% extends "layout_login.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table style="width:100%">
+        <tr>
+            <th>Transaction_ID</th>
+            <th>Customer_Id</th>
+            <th>Trade</th>
+            <th>Flat ID</th>
+            <th>Price</th>
+            <th>Time</th>
+        </tr>
+        {% for transaction_id, costumer_id, price, type, time, flat_no, user_id in user %}
+            <tr>
+                <td>{{ transaction_id }}</td>
+                <td>{{ costumer_id }}</td>
+                <td>{{ type }}</td>
+                <td>{{ flat_no }}
+                <td>{{ price }} $</td>
+                <td>{{ time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
