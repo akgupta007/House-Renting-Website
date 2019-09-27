@@ -1,7 +1,8 @@
 # House-Renting-Website
 
 ## Overview
-  + This Project Aims to develop a house renting website where users can buy, rent or sell their houses.
+  + This Website is developed on **python flask** with **postgreSQL** as backend Database management system.
+  + It Aims to develop a house renting website where users can buy, rent or sell their houses.
   + Database contains:
     + Users Data eg: user login, balance and payment details
     + Houses database like Location, pricing, owner, nearby places etc.
