@@ -11,4 +11,3 @@
     + User friendly UI and Efficient queries and Triggers have been implemented to provide better user experience.
     + User can filter houses data based on location, price range, Number of bedrooms, nearest university and many more.
   + More details on ER diagram, data source link and queries are given in *Documentation.pdf*
-  + Sample UI is given in sample folder
